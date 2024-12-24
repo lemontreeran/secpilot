@@ -1,0 +1,49 @@
+{
+  "name": "secpilot",
+  "displayName": "secpilot",
+  "description": "SecPilot is a powerful VSCode extension that seamlessly integrates with GitHub Copilot to bring Static Application Security Testing (SAST) directly into your development workflow. ",
+  "version": "0.0.1",
+  "engines": {
+    "vscode": "^1.96.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [],
+  "main": "./out/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "secpilot.scanFile",
+        "title": "SAST Scan File",
+        "category": "secpilot"
+      }
+    ]
+  },
+  "scripts": {
+    "npm_install": "npm install",
+    "npm_reinstall": "rm -rf node_modules && npm run npm_install",
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "fix-lint": "eslint --fix src/**/*.ts",
+    "pretest": "npm run compile && npm run lint",
+    "lint": "eslint src",
+    "test": "vscode-test",
+    "coverage": "node ./out/test/runTest.js --coverage",
+    "vscode:prepublish": "npm run compile",
+    "package": "vsce package -o sastgemini.vsix",
+    "installExtension": "code --install-extension sastgemini.vsix --force"
+  },
+  "devDependencies": {
+    "@types/vscode": "^1.96.0",
+    "@types/mocha": "^10.0.10",
+    "@types/node": "20.x",
+    "@typescript-eslint/eslint-plugin": "^8.17.0",
+    "@typescript-eslint/parser": "^8.17.0",
+    "eslint": "^9.16.0",
+    "typescript": "^5.7.2",
+    "@vscode/test-cli": "^0.0.10",
+    "@vscode/test-electron": "^2.4.1"
+  }
+}
