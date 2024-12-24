@@ -67,6 +67,10 @@ async function scanSASTFile(context) {
 async function scanAndApplyDiagnostics(context, filePath, text) {
     try {
         const result = await (0, copilot_1.doSASTScan)(context, text);
+        if (!result || !result.message) {
+            console.error("Error: No result or message received from the scan.");
+            return;
+        }
         // Parse the result and create diagnostics
         const diagnostics = [];
         // const scanResults = JSON.parse(result.message);

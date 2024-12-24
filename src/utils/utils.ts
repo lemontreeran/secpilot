@@ -38,6 +38,10 @@ export async function scanSASTFile(context: vscode.ExtensionContext) {
 export async function scanAndApplyDiagnostics(context: vscode.ExtensionContext, filePath: string, text: string) {
     try {
         const result = await doSASTScan(context, text);
+        if (!result || !result.message) {
+            console.error("Error: No result or message received from the scan.");
+            return;
+        }
         // Parse the result and create diagnostics
         const diagnostics = [];
         // const scanResults = JSON.parse(result.message);
