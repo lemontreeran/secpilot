@@ -32,7 +32,7 @@
     "test": "vscode-test",
     "coverage": "node ./out/test/runTest.js --coverage",
     "vscode:prepublish": "npm run compile",
-    "package": "vsce package -o sastgemini.vsix",
+    "package": "vsce package -o secpilot.vsix",
     "installExtension": "code --install-extension sastgemini.vsix --force"
   },
   "devDependencies": {
